@@ -41,6 +41,10 @@ export default function Post() {
       const docRef = doc(db, "posts", post.id);
       const updatedPost = { ...post, timestamp: serverTimestamp() };
       await updateDoc(docRef, updatedPost);
+      toast.success("Post has been updated 🚀", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1500,
+      });
       return route.push("/");
     } else {
       //Make a new post
